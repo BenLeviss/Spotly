@@ -1,0 +1,9 @@
+### Add a new post
+POST http://localhost:3000/post
+Content-Type: application/json
+
+{
+    "title": "My First Post",
+    "content": "Hello World!",
+    "username": "user1"
+}
