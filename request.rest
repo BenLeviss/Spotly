@@ -19,13 +19,22 @@ GET  http://localhost:3000/post
 GET http://localhost:3000/post/696b685b0be9a5bebeecca28
 
 ### Get Posts by Sender - /post?sender=<sender_id>
-GET http://localhost:3000/post?sender=user2
+GET http://localhost:3000/post?sender=user1
 
 ### Update a Post - /post/<post_id>
-PUT http://localhost:3000/post/1234
+### Update a Post
+PUT http://localhost:3000/post/696b685b0be9a5bebeecca28
+Content-Type: application/json
+
+{
+  "title": "Updated Post Title",
+  "content": "Updated content of the post",
+  "username": "user11"
+}
+
 
 ### Delete a Post - /post/<post_is>
-PUT http://localhost:3000/post/1234
+DELETE http://localhost:3000/post/696b685b0be9a5bebeecca28
 
 
 ###########################################################
