@@ -32,4 +32,43 @@ const getPostById = async (req, res) => {
   }
 };
 
-module.exports = { createPost, getPosts, getPostById };
+// 4. Update a Post
+const updatePostById = async (req, res) => {
+  try {
+    const updatedPost = await Post.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }, // return the updated document
+    );
+
+    if (updatedPost) {
+      res.send(updatedPost);
+    } else {
+      res.status(404).send("Post not found");
+    }
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
+const deletePostById = async (req, res) => {
+  try {
+    const post = await Post.findByIdAndDelete(req.params.id);
+
+    if (post) {
+      res.send({ message: "Post deleted successfully", post });
+    } else {
+      res.status(404).send("Post not found");
+    }
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
+module.exports = {
+  createPost,
+  getPosts,
+  getPostById,
+  updatePostById,
+  deletePostById,
+};
