@@ -30,8 +30,18 @@ const getCommentsByPost = async (req, res) => {
     }
 }
 
+const getAllComments = async (req, res) => {
+    try {
+        const comments = await Comment.find({})
+        res.json(comments);
+    } catch (error) {
+        res.status(500).json({error: error.message});
+    }
+}
+
 
 module.exports = {
     createComment,
-    getCommentsByPost
+    getCommentsByPost,
+    getAllComments
 }
