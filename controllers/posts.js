@@ -10,10 +10,10 @@ const createPost = async (req, res) => {
   }
 };
 
-// 2. Get All Posts
-const getAllPosts = async (req, res) => {
+// 2. Get All Posts / By sender
+const getPosts = async (req, res) => {
   try {
-    const filter = req.query.sender ? { sender: req.query.sender } : {};
+    const filter = req.query.sender ? { username: req.query.sender } : {};
     const posts = await Post.find(filter);
     res.send(posts);
   } catch (error) {
@@ -32,5 +32,43 @@ const getPostById = async (req, res) => {
   }
 };
 
-module.exports = { createPost, getAllPosts, getPostById };
+// 4. Update a Post
+const updatePostById = async (req, res) => {
+  try {
+    const updatedPost = await Post.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }, // return the updated document
+    );
 
+    if (updatedPost) {
+      res.send(updatedPost);
+    } else {
+      res.status(404).send("Post not found");
+    }
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
+const deletePostById = async (req, res) => {
+  try {
+    const post = await Post.findByIdAndDelete(req.params.id);
+
+    if (post) {
+      res.send({ message: "Post deleted successfully", post });
+    } else {
+      res.status(404).send("Post not found");
+    }
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
+module.exports = {
+  createPost,
+  getPosts,
+  getPostById,
+  updatePostById,
+  deletePostById,
+};
