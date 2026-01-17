@@ -42,11 +42,11 @@ DELETE http://localhost:3000/post/696b685b0be9a5bebeecca28
 ## COMMENTS CRUD
 
 ### Add a New Comment - /post/<post_id>/comment
-POST http://localhost:3000/post/1234/comment
+POST http://localhost:3000/post/696b7ad91deb2b9627f0473a/comment
 Content-Type: application/json
+
 {
-    "postId": "1234",
-    "UserName": "avia",
+    "userName": "avia",
     "content": "dfjkfdk"
 }
 
