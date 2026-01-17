@@ -9,7 +9,7 @@ router.post("/", postsController.createPost);
 // router.get("/", postsController.getAllPosts);
 
 // 3. Get a Post by ID
-// router.get("/:id", postsController.getPostById);
+router.get("/:id", postsController.getPostById);
 
 // 5. Update a Post
 // router.put("/:id", postsController.updatePost);
