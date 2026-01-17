@@ -5,13 +5,13 @@ const postsController = require("../controllers/posts");
 // 1. Add a New Post
 router.post("/", postsController.createPost);
 
-// 2. Get All Posts
-router.get("/", postsController.getAllPosts);
+// 2. Posts All Posts / By sender
+router.get("/", postsController.getPosts);
 
 // 3. Get a Post by ID
 router.get("/:id", postsController.getPostById);
 
-// 5. Update a Post
+// 4. Update a Post
 // router.put("/:id", postsController.updatePost);
 
 module.exports = router;

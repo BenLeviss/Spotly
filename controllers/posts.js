@@ -10,10 +10,10 @@ const createPost = async (req, res) => {
   }
 };
 
-// 2. Get All Posts
-const getAllPosts = async (req, res) => {
+// 2. Get All Posts / By sender
+const getPosts = async (req, res) => {
   try {
-    const filter = req.query.sender ? { sender: req.query.sender } : {};
+    const filter = req.query.sender ? { username: req.query.sender } : {};
     const posts = await Post.find(filter);
     res.send(posts);
   } catch (error) {
@@ -32,5 +32,4 @@ const getPostById = async (req, res) => {
   }
 };
 
-module.exports = { createPost, getAllPosts, getPostById };
-
+module.exports = { createPost, getPosts, getPostById };
