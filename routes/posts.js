@@ -1,20 +1,24 @@
 const express = require("express");
 const postRouter = express.Router();
 const postsController = require("../controllers/posts");
+const commentController = require("../controllers/comment");
 
-// 1. Add a New Post
+// Add a New Post
 postRouter.post("/", postsController.createPost);
 
-// 2. Posts All Posts / By sender
+// Posts All Posts / By sender
 postRouter.get("/", postsController.getPosts);
 
-// 3. Get a Post by ID
-postRouter.get("/:id", postsController.getPostById);
+// Get a Post by ID
+postRouter.get("/:postId", postsController.getPostById);
 
-// 4. Update a Post
-postRouter.put("/:id", postsController.updatePostById);
+// Update a Post
+postRouter.put("/:postId", postsController.updatePostById);
 
-// 5. Delete a Post by ID
-postRouter.delete("/:id", postsController.deletePostById);
+// Delete a Post by ID
+postRouter.delete("/:postId", postsController.deletePostById);
+
+// Add new Comment 
+postRouter.post("/:postId/comment", commentController.addComment);
 
 module.exports = postRouter;

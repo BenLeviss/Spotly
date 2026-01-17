@@ -1,9 +1,15 @@
-const Comment = require ("../models/comment")
+const Comment = require ("../models/comment");
+const Post = require ("../models/post");
 
-const addComment = async (res, req) => {
+const createComment = async (res, req) => {
     try {
-        const newComment = req.body;
-        const response = await Comment.create(newComment)
+        const postId = req.params;
+        const { userName, content } = req.body;
+        const post = await Post.findById(postId);
+        if (!post) {
+            return res.status(404).json({ error: "Post not found" });
+        }
+        const response = await Comment.create( postId, userName, content)
         res.status(201).json(response);
     } catch (error) {
         res.status(500).json({error: error.message});
@@ -11,5 +17,5 @@ const addComment = async (res, req) => {
 }
 
 module.exports = {
-    addComment
+    createComment
 }
