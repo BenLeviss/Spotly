@@ -1,6 +1,5 @@
 const Post = require("../models/post");
 
-// 1. Add a New Post
 const createPost = async (req, res) => {
   try {
     const post = await Post.create(req.body);
@@ -10,7 +9,6 @@ const createPost = async (req, res) => {
   }
 };
 
-// 2. Get All Posts / By sender
 const getPosts = async (req, res) => {
   try {
     const filter = req.query.sender ? { username: req.query.sender } : {};
@@ -21,7 +19,6 @@ const getPosts = async (req, res) => {
   }
 };
 
-// 3. Get Post by ID
 const getPostById = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -32,7 +29,6 @@ const getPostById = async (req, res) => {
   }
 };
 
-// 4. Update a Post
 const updatePostById = async (req, res) => {
   try {
     const updatedPost = await Post.findByIdAndUpdate(

@@ -4,7 +4,9 @@
   "description": "Spotly is an app that allows users to discover, share, and recommend unique places.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon --env-file=.env_dev index.js"
   },
   "repository": {
     "type": "git",
