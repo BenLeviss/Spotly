@@ -10,4 +10,15 @@ const createPost = async (req, res) => {
   }
 };
 
-module.exports = { createPost };
+// 2. Get All Posts
+const getAllPosts = async (req, res) => {
+  try {
+    const filter = req.query.sender ? { sender: req.query.sender } : {};
+    const posts = await Post.find(filter);
+    res.send(posts);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+
+module.exports = { createPost, getAllPosts };
