@@ -21,4 +21,7 @@ postRouter.delete("/:postId", postsController.deletePostById);
 // Add new Comment 
 postRouter.post("/:postId/comment", commentController.createComment);
 
+// Get all comment for a post 
+postRouter.get("/:postId/comment", commentController.getCommentsByPost);
+
 module.exports = postRouter;
