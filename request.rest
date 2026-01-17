@@ -34,6 +34,12 @@ PUT http://localhost:3000/post/1234
 
 ### Add a New Comment - /post/<post_id>/comment
 POST http://localhost:3000/post/1234/comment
+Content-Type: application/json
+{
+    "postId": "1234",
+    "UserName": "avia",
+    "content": "dfjkfdk"
+}
 
 ### Get all Comments for a Post  - /post/<post_id>/comment
 GET http://localhost:3000/post/1234/comment
