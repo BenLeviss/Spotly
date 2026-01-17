@@ -1,4 +1,8 @@
-### Add a new post
+###########################################################
+
+### POST  CRUD
+
+### Add a New Post
 POST http://localhost:3000/post
 Content-Type: application/json
 
@@ -7,3 +11,41 @@ Content-Type: application/json
     "content": "Hello World!",
     "username": "user1"
 }
+
+### Get All Posts
+GET  http://localhost:3000/post
+
+### Get a Post by ID - /post/<post_id>
+GET http://localhost:3000/post/1234
+
+### Get Posts by Sender - /post?sender=<sender_id>
+GET http://localhost:3000/post?sender=avia
+
+### Update a Post - /post/<post_id>
+PUT http://localhost:3000/post/1234
+
+### Delete a Post - /post/<post_is>
+PUT http://localhost:3000/post/1234
+
+
+###########################################################
+
+## COMMENTS CRUD
+
+### Add a New Comment - /post/<post_id>/comment
+POST http://localhost:3000/post/1234/comment
+
+### Get all Comments for a Post  - /post/<post_id>/comment
+GET http://localhost:3000/post/1234/comment
+
+### Get All Comments
+GET http://localhost:3000/comment
+
+### Get Comment by ID - /comment/<comment_id>
+GET http://localhost:3000/comment/1212
+
+### Update a Comment - /comment/comment_id
+PUT http://localhost:3000/comment/1212
+
+### Delete comment by ID - /comment/comment_id
+DELETE http://localhost:3000/comment/1212
