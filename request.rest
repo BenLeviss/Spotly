@@ -60,7 +60,12 @@ GET http://localhost:3000/comment
 GET http://localhost:3000/comment/696b819a5d875bd4beb412de
 
 ### Update a Comment - /comment/comment_id
-PUT http://localhost:3000/comment/1212
+PUT http://localhost:3000/comment/696b819a5d875bd4beb412de
+Content-Type: application/json
 
+{
+    "userName": "mer",
+    "content": "dfjkfdk"
+}
 ### Delete comment by ID - /comment/comment_id
 DELETE http://localhost:3000/comment/1212
