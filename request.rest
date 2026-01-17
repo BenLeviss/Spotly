@@ -24,6 +24,9 @@ GET http://localhost:3000/post?sender=avia
 ### Update a Post - /post/<post_id>
 PUT http://localhost:3000/post/1234
 
+### Delete a Post - /post/<post_is>
+PUT http://localhost:3000/post/1234
+
 
 ###########################################################
 
