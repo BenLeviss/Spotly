@@ -11,7 +11,7 @@ const createPost = async (req, res) => {
 
 const getPosts = async (req, res) => {
   try {
-    const filter = req.query.sender ? { username: req.query.sender } : {};
+    const filter = req.query.sender ? { userName: req.query.sender } : {};
     const posts = await Post.find(filter);
     res.send(posts);
   } catch (error) {
@@ -21,7 +21,7 @@ const getPosts = async (req, res) => {
 
 const getPostById = async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
+    const post = await Post.findById(req.params.postId);
     if (post) res.send(post);
     else res.status(404).send("Post not found");
   } catch (error) {
@@ -32,7 +32,7 @@ const getPostById = async (req, res) => {
 const updatePostById = async (req, res) => {
   try {
     const updatedPost = await Post.findByIdAndUpdate(
-      req.params.id,
+      req.params.postId,
       req.body,
       { new: true, runValidators: true }, // return the updated document
     );
@@ -49,7 +49,7 @@ const updatePostById = async (req, res) => {
 
 const deletePostById = async (req, res) => {
   try {
-    const post = await Post.findByIdAndDelete(req.params.id);
+    const post = await Post.findByIdAndDelete(req.params.postId);
 
     if (post) {
       res.send({ message: "Post deleted successfully", post });
